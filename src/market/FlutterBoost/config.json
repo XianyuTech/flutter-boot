@@ -1,0 +1,13 @@
+{
+    "pubspec": {
+        "name": "flutter_boost",
+        "version": "0.1.52"
+    },
+    "android": {
+        "targetPath": "${workspace}/app/src/main/java/com/example/fbi"
+    },
+    "dart": {
+        "targetPath": "${workspace}/lib"
+    },
+    "gradle": "compile project(path: ':flutter_boost')"
+}

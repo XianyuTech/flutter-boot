@@ -1,0 +1,578 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		542FCC8A22D6DBE000FFE07E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 542FCC8922D6DBE000FFE07E /* AppDelegate.m */; };
+		542FCC8D22D6DBE000FFE07E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 542FCC8C22D6DBE000FFE07E /* ViewController.m */; };
+		542FCC9022D6DBE000FFE07E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 542FCC8E22D6DBE000FFE07E /* Main.storyboard */; };
+		542FCC9222D6DBE100FFE07E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542FCC9122D6DBE100FFE07E /* Assets.xcassets */; };
+		542FCC9522D6DBE100FFE07E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 542FCC9322D6DBE100FFE07E /* LaunchScreen.storyboard */; };
+		542FCC9822D6DBE100FFE07E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 542FCC9722D6DBE100FFE07E /* main.m */; };
+		542FCCA222D6DBE100FFE07E /* tiosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 542FCCA122D6DBE100FFE07E /* tiosTests.m */; };
+		542FCCAD22D6DBE100FFE07E /* tiosUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 542FCCAC22D6DBE100FFE07E /* tiosUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		542FCC9E22D6DBE100FFE07E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 542FCC7D22D6DBE000FFE07E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 542FCC8422D6DBE000FFE07E;
+			remoteInfo = tios;
+		};
+		542FCCA922D6DBE100FFE07E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 542FCC7D22D6DBE000FFE07E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 542FCC8422D6DBE000FFE07E;
+			remoteInfo = tios;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		542FCC8522D6DBE000FFE07E /* tios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tios.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		542FCC8822D6DBE000FFE07E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		542FCC8922D6DBE000FFE07E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		542FCC8B22D6DBE000FFE07E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		542FCC8C22D6DBE000FFE07E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		542FCC8F22D6DBE000FFE07E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		542FCC9122D6DBE100FFE07E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		542FCC9422D6DBE100FFE07E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		542FCC9622D6DBE100FFE07E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		542FCC9722D6DBE100FFE07E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		542FCC9D22D6DBE100FFE07E /* tiosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tiosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		542FCCA122D6DBE100FFE07E /* tiosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tiosTests.m; sourceTree = "<group>"; };
+		542FCCA322D6DBE100FFE07E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		542FCCA822D6DBE100FFE07E /* tiosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tiosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		542FCCAC22D6DBE100FFE07E /* tiosUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tiosUITests.m; sourceTree = "<group>"; };
+		542FCCAE22D6DBE100FFE07E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		542FCC8222D6DBE000FFE07E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		542FCC9A22D6DBE100FFE07E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		542FCCA522D6DBE100FFE07E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		542FCC7C22D6DBE000FFE07E = {
+			isa = PBXGroup;
+			children = (
+				542FCC8722D6DBE000FFE07E /* tios */,
+				542FCCA022D6DBE100FFE07E /* tiosTests */,
+				542FCCAB22D6DBE100FFE07E /* tiosUITests */,
+				542FCC8622D6DBE000FFE07E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		542FCC8622D6DBE000FFE07E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				542FCC8522D6DBE000FFE07E /* tios.app */,
+				542FCC9D22D6DBE100FFE07E /* tiosTests.xctest */,
+				542FCCA822D6DBE100FFE07E /* tiosUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		542FCC8722D6DBE000FFE07E /* tios */ = {
+			isa = PBXGroup;
+			children = (
+				542FCC8822D6DBE000FFE07E /* AppDelegate.h */,
+				542FCC8922D6DBE000FFE07E /* AppDelegate.m */,
+				542FCC8B22D6DBE000FFE07E /* ViewController.h */,
+				542FCC8C22D6DBE000FFE07E /* ViewController.m */,
+				542FCC8E22D6DBE000FFE07E /* Main.storyboard */,
+				542FCC9122D6DBE100FFE07E /* Assets.xcassets */,
+				542FCC9322D6DBE100FFE07E /* LaunchScreen.storyboard */,
+				542FCC9622D6DBE100FFE07E /* Info.plist */,
+				542FCC9722D6DBE100FFE07E /* main.m */,
+			);
+			path = tios;
+			sourceTree = "<group>";
+		};
+		542FCCA022D6DBE100FFE07E /* tiosTests */ = {
+			isa = PBXGroup;
+			children = (
+				542FCCA122D6DBE100FFE07E /* tiosTests.m */,
+				542FCCA322D6DBE100FFE07E /* Info.plist */,
+			);
+			path = tiosTests;
+			sourceTree = "<group>";
+		};
+		542FCCAB22D6DBE100FFE07E /* tiosUITests */ = {
+			isa = PBXGroup;
+			children = (
+				542FCCAC22D6DBE100FFE07E /* tiosUITests.m */,
+				542FCCAE22D6DBE100FFE07E /* Info.plist */,
+			);
+			path = tiosUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		542FCC8422D6DBE000FFE07E /* tios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 542FCCB122D6DBE100FFE07E /* Build configuration list for PBXNativeTarget "tios" */;
+			buildPhases = (
+				542FCC8122D6DBE000FFE07E /* Sources */,
+				542FCC8222D6DBE000FFE07E /* Frameworks */,
+				542FCC8322D6DBE000FFE07E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tios;
+			productName = tios;
+			productReference = 542FCC8522D6DBE000FFE07E /* tios.app */;
+			productType = "com.apple.product-type.application";
+		};
+		542FCC9C22D6DBE100FFE07E /* tiosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 542FCCB422D6DBE100FFE07E /* Build configuration list for PBXNativeTarget "tiosTests" */;
+			buildPhases = (
+				542FCC9922D6DBE100FFE07E /* Sources */,
+				542FCC9A22D6DBE100FFE07E /* Frameworks */,
+				542FCC9B22D6DBE100FFE07E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				542FCC9F22D6DBE100FFE07E /* PBXTargetDependency */,
+			);
+			name = tiosTests;
+			productName = tiosTests;
+			productReference = 542FCC9D22D6DBE100FFE07E /* tiosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		542FCCA722D6DBE100FFE07E /* tiosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 542FCCB722D6DBE100FFE07E /* Build configuration list for PBXNativeTarget "tiosUITests" */;
+			buildPhases = (
+				542FCCA422D6DBE100FFE07E /* Sources */,
+				542FCCA522D6DBE100FFE07E /* Frameworks */,
+				542FCCA622D6DBE100FFE07E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				542FCCAA22D6DBE100FFE07E /* PBXTargetDependency */,
+			);
+			name = tiosUITests;
+			productName = tiosUITests;
+			productReference = 542FCCA822D6DBE100FFE07E /* tiosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		542FCC7D22D6DBE000FFE07E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "闲鱼";
+				TargetAttributes = {
+					542FCC8422D6DBE000FFE07E = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					542FCC9C22D6DBE100FFE07E = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 542FCC8422D6DBE000FFE07E;
+					};
+					542FCCA722D6DBE100FFE07E = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 542FCC8422D6DBE000FFE07E;
+					};
+				};
+			};
+			buildConfigurationList = 542FCC8022D6DBE000FFE07E /* Build configuration list for PBXProject "tios" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 542FCC7C22D6DBE000FFE07E;
+			productRefGroup = 542FCC8622D6DBE000FFE07E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				542FCC8422D6DBE000FFE07E /* tios */,
+				542FCC9C22D6DBE100FFE07E /* tiosTests */,
+				542FCCA722D6DBE100FFE07E /* tiosUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		542FCC8322D6DBE000FFE07E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				542FCC9522D6DBE100FFE07E /* LaunchScreen.storyboard in Resources */,
+				542FCC9222D6DBE100FFE07E /* Assets.xcassets in Resources */,
+				542FCC9022D6DBE000FFE07E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		542FCC9B22D6DBE100FFE07E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		542FCCA622D6DBE100FFE07E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		542FCC8122D6DBE000FFE07E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				542FCC8D22D6DBE000FFE07E /* ViewController.m in Sources */,
+				542FCC9822D6DBE100FFE07E /* main.m in Sources */,
+				542FCC8A22D6DBE000FFE07E /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		542FCC9922D6DBE100FFE07E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				542FCCA222D6DBE100FFE07E /* tiosTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		542FCCA422D6DBE100FFE07E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				542FCCAD22D6DBE100FFE07E /* tiosUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		542FCC9F22D6DBE100FFE07E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 542FCC8422D6DBE000FFE07E /* tios */;
+			targetProxy = 542FCC9E22D6DBE100FFE07E /* PBXContainerItemProxy */;
+		};
+		542FCCAA22D6DBE100FFE07E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 542FCC8422D6DBE000FFE07E /* tios */;
+			targetProxy = 542FCCA922D6DBE100FFE07E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		542FCC8E22D6DBE000FFE07E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				542FCC8F22D6DBE000FFE07E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		542FCC9322D6DBE100FFE07E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				542FCC9422D6DBE100FFE07E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		542FCCAF22D6DBE100FFE07E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		542FCCB022D6DBE100FFE07E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		542FCCB222D6DBE100FFE07E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = tios/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.fleamarket.testme.tios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		542FCCB322D6DBE100FFE07E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = tios/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.fleamarket.testme.tios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		542FCCB522D6DBE100FFE07E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = tiosTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.fleamarket.testme.tiosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tios.app/tios";
+			};
+			name = Debug;
+		};
+		542FCCB622D6DBE100FFE07E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = tiosTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.fleamarket.testme.tiosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tios.app/tios";
+			};
+			name = Release;
+		};
+		542FCCB822D6DBE100FFE07E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = tiosUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.fleamarket.testme.tiosUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = tios;
+			};
+			name = Debug;
+		};
+		542FCCB922D6DBE100FFE07E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = tiosUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.taobao.fleamarket.testme.tiosUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = tios;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		542FCC8022D6DBE000FFE07E /* Build configuration list for PBXProject "tios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				542FCCAF22D6DBE100FFE07E /* Debug */,
+				542FCCB022D6DBE100FFE07E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		542FCCB122D6DBE100FFE07E /* Build configuration list for PBXNativeTarget "tios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				542FCCB222D6DBE100FFE07E /* Debug */,
+				542FCCB322D6DBE100FFE07E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		542FCCB422D6DBE100FFE07E /* Build configuration list for PBXNativeTarget "tiosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				542FCCB522D6DBE100FFE07E /* Debug */,
+				542FCCB622D6DBE100FFE07E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		542FCCB722D6DBE100FFE07E /* Build configuration list for PBXNativeTarget "tiosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				542FCCB822D6DBE100FFE07E /* Debug */,
+				542FCCB922D6DBE100FFE07E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 542FCC7D22D6DBE000FFE07E /* Project object */;
+}
