@@ -45,9 +45,19 @@ We supports a fast intergration of flutter-boost which is a standard solution to
     /// add a button in native activity for navigating to flutter
     FBViewEntry.setup(this);
     ```
-
+    
     In iOS
-    * Please follow the [instruction here](https://github.com/alibaba/flutter_boost) from flutter-boost github
+    * change the super class of Appdelegate to FLBFlutterAppDelegate, import code:
+    ```
+    #import <flutter_boost/FLBFlutterAppDelegate.h>
+    ```
+    * insert the code below into the "application:didFinishLaunchingWithOptions" method in your Appdelegate.m
+    ```
+    #import "FBDemoRouter.h"
+
+    [[FBDemoRouter shared]addEntryView:self];
+    ```
+    * run target Runner
 
 4. your workmates do
     if you have prepared hybrid enviroment by flutter-boot, and your workmates want to develop flutter, then they should run flutter-boot link before running flutter.

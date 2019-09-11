@@ -2,6 +2,7 @@ const fs = require('fs')
 const execSync = require('child_process').execSync
 const ncp = require('ncp').ncp
 const path = require('path')
+const XCODEPROJ_SUFFIX = '.xcodeproj'
 
 let lsCache = {}
 
@@ -118,8 +119,7 @@ function addOrReplaceContentBySurround (
 function createSoftLink (linkPath, targetDir) {
   try {
     fs.unlinkSync(linkPath)
-  } catch (e) {
-  }
+  } catch (e) {}
   fs.symlinkSync(targetDir, linkPath, 'dir')
 }
 
@@ -129,6 +129,7 @@ function projectChecker (projectPath) {
     const dirfiles = fs.readdirSync(projectPath)
     checker.dirfiles = dirfiles
     checker.currentPath = projectPath
+    checker.getProjectName(true)
   }
   checker.isAndroid = () => {
     return hasFileInList(checker.dirfiles, /gradle$/)
@@ -144,6 +145,36 @@ function projectChecker (projectPath) {
   }
   checker.gradlePath = () => {
     return path.join(checker.currentPath, 'app/build.gradle')
+  }
+  checker.getProjectName = (force = false) => {
+    if (!force && checker.projectName) {
+      return checker.projectName
+    }
+    if (checker.isIOS()) {
+      const dirfiles = checker.dirfiles
+      let projectFullName = ''
+      dirfiles.every(filename => {
+        if (filename.endsWith(XCODEPROJ_SUFFIX)) {
+          projectFullName = filename
+          return false
+        }
+        return true
+      })
+      const projectName = projectFullName.substring(
+        0,
+        projectFullName.indexOf(XCODEPROJ_SUFFIX)
+      )
+      checker.projectName = projectName
+    } else {
+      checker.projectName = path.basename(checker.currentPath)
+    }
+    return checker.projectName
+  }
+  checker.xcodeproj = () => {
+    return path.join(
+      checker.currentPath,
+      checker.getProjectName() + XCODEPROJ_SUFFIX
+    )
   }
   checker.refresh()
   return checker

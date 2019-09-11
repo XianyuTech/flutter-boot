@@ -6,6 +6,9 @@
     "android": {
         "targetPath": "${workspace}/app/src/main/java/com/example/fbi"
     },
+    "ios": {
+        "targetPath": "${workspace}/${projectname}/fbi"
+    },
     "dart": {
         "targetPath": "${workspace}/lib"
     },

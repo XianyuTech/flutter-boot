@@ -184,8 +184,8 @@ class linker {
       let endIndex = replacedTargetStr.lastIndexOf(end)
       let str =
         "\n  eval(File.read(File.join(File.dirname(__FILE__), 'fbpodhelper.rb')), binding)\n"
-      let targetContent = FLAG + '\n' + 
-        replacedTargetStr.substring(startIndex, endIndex) + str
+      let targetContent =
+        FLAG + '\n' + replacedTargetStr.substring(startIndex, endIndex) + str
       let injection = '\n' + targetContent + '\n' + end + '\n'
       fs.appendFileSync(podfilePath, injection)
     } else {
@@ -251,12 +251,15 @@ class linker {
 
   checkPostInstallHook () {
     let rawdata = fs.readFileSync(this.podfile(), 'utf8')
-      if (rawdata.includes('post_install do |installer|') && 
-          !rawdata.includes(FLAG)) {
-        log.error(
-          TAG, 
-          '`post_install` hook exists, which will conflict with podhelper.rb and rise a `multiple post_install hooks` error. See https://github.com/flutter/flutter/issues/26212 for detail.')
-      }
+    if (
+      rawdata.includes('post_install do |installer|') &&
+      !rawdata.includes(FLAG)
+    ) {
+      log.error(
+        TAG,
+        '`post_install` hook exists, which will conflict with podhelper.rb and rise a `multiple post_install hooks` error. See https://github.com/flutter/flutter/issues/26212 for detail.'
+      )
+    }
   }
 
   injectGitIgnore () {

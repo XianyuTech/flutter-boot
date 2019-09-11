@@ -3,6 +3,7 @@ const path = require('path')
 const pubspecHelper = require('../utils/pubspecHelper')
 const execSync = require('child_process').execSync
 const fsutils = require('../utils/fsutils')
+const execUtils = require('../utils/execUtils')
 const log = require('../log')
 
 const TAG = '[use]'
@@ -35,6 +36,19 @@ class GeneratorUse {
       if (config.gradle) {
         this.injectGradle(projChecker.gradlePath(), config.gradle)
       }
+    } else if (projChecker.isIOS()) {
+      let targetPath = config.ios.targetPath
+      targetPath = targetPath.replace('${workspace}', nativePath)
+      targetPath = targetPath.replace(
+        '${projectname}',
+        projChecker.getProjectName()
+      )
+      log.silly(TAG, `ios target path:${targetPath}`)
+      await this.copyTpl('ios', depName, targetPath)
+      execUtils.execRubySync('add_ios_tpl.rb', [
+        projChecker.xcodeproj(),
+        targetPath
+      ])
     }
     let targetPath = config.dart.targetPath
     targetPath = targetPath.replace('${workspace}', flutterPath)
