@@ -56,7 +56,7 @@ class GeneratorUse {
     await this.copyTpl('dart', depName, targetPath)
 
     if (projChecker.isIOS()) {
-      execSync('pod install', {
+      execSync('pod update --no-repo-update', {
         stdio: 'inherit',
         cwd: nativePath
       })
