@@ -1,6 +1,6 @@
 {
   "name": "flutter-boot",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Flutter existing App integration tool.",
   "bin": {
     "flutter-boot": "./index.js"

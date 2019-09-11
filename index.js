@@ -17,6 +17,6 @@ require('./src/commands/update')(program)
 require('./src/commands/use')(program)
 
 program
-  .version('0.0.4')
+  .version('0.0.5')
   .description('Flutter Boot: install && run')
   .parse(process.argv)
