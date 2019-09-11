@@ -45,6 +45,14 @@
     }
 }
 
+- (void)openPage:(NSString *)name
+          params:(NSDictionary *)params
+        animated:(BOOL)animated
+      completion:(void (^)(BOOL))completion
+{
+    [self openPage:name params:params animated:animated completion:completion];
+}
+
 
 - (void)closePage:(NSString *)uid animated:(BOOL)animated params:(NSDictionary *)params completion:(void (^)(BOOL))completion
 {
@@ -63,9 +71,9 @@
     CGRect bounds = [[UIScreen mainScreen]bounds];
     CGFloat width = 200;
     btn.frame = CGRectMake((CGRectGetWidth(bounds)-width)/2, 88, width, 44);
-    [btn setTitle:@"Navigator to flutter" forState:UIControlStateNormal];
-    [btn setBackgroundColor:[UIColor blueColor]];
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn setTitle:@"Navigate To Flutter" forState:UIControlStateNormal];
+    [btn setBackgroundColor:[UIColor colorWithRed:0.106 green:0.639 blue:0.984 alpha:1.0]];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(jump) forControlEvents:UIControlEventTouchUpInside];
     [root.view addSubview:btn];
     root.title = @"Hello World";
