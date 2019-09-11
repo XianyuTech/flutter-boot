@@ -197,6 +197,11 @@ somepath/my_repo
 └──my_android
     └──com.example.fbi.fb
 └──my_ios
+    └──tios
+        └──fbi
+            └──fb
+                └──FBDemoRouter.h
+                └──FBDemoRouter.m
 └──my_flutter
     └──pubspec.yaml
 ```
@@ -250,6 +255,25 @@ command init assembles a bunch of other commands that helps you build native-flu
     ```
 
     iOS应用
+    * 将Appdelegate的父类修改为FLBFlutterAppDelegate，参考如下代码:
+    ```
+    #import <flutter_boost/FLBFlutterAppDelegate.h>
+
+    @interface AppDelegate : FLBFlutterAppDelegate <UIApplicationDelegate>
+    ```
+    * 将以下代码插入在Appdelegate.m文件的"application:didFinishLaunchingWithOptions"方法中
+    ```
+    #import "FBDemoRouter.h"
+
+    [FBDemoRouter registerInFlutterBoost];
+    ```
+    * 将以下代码插在你的viewcontroller文件中，它会展示一个跳转flutter的入口按钮
+    ```
+    #import "FBDemoRouter.h"
+    /// add a button in native controller for navigating to flutter
+    [[FBDemoRouter shared]addEntryView:self];
+    ```
+    * run target Runner
     * 暂请根据混合栈[官方文档](https://github.com/alibaba/flutter_boost)进行接入
 
 4. 如果你的同事已经使用flutter-boot创建好了混合工程，而你又需要进行flutter开发，那么你需要的是在启动app前运行flutter-boot link来关联你的本地的flutter工程和native工程
@@ -381,6 +405,11 @@ somepath/my_repo
 └──my_android
     └──com.example.fbi.fb
 └──my_ios
+    └──tios
+        └──fbi
+            └──fb
+                └──FBDemoRouter.h
+                └──FBDemoRouter.m
 └──my_flutter
     └──pubspec.yaml
 ```
