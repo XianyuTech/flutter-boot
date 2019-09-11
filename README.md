@@ -50,11 +50,19 @@ We supports a fast intergration of flutter-boost which is a standard solution to
     * change the super class of Appdelegate to FLBFlutterAppDelegate, import code:
     ```
     #import <flutter_boost/FLBFlutterAppDelegate.h>
+
+    @interface AppDelegate : FLBFlutterAppDelegate <UIApplicationDelegate>
     ```
     * insert the code below into the "application:didFinishLaunchingWithOptions" method in your Appdelegate.m
     ```
     #import "FBDemoRouter.h"
 
+    [FBDemoRouter registerInFlutterBoost];
+    ```
+    * insert the code below into your viewcontroller
+    ```
+    #import "FBDemoRouter.h"
+    /// add a button in native controller for navigating to flutter
     [[FBDemoRouter shared]addEntryView:self];
     ```
     * run target Runner
