@@ -273,8 +273,7 @@ command init assembles a bunch of other commands that helps you build native-flu
     /// add a button in native controller for navigating to flutter
     [[FBDemoRouter shared]addEntryView:self];
     ```
-    * run target Runner
-    * 暂请根据混合栈[官方文档](https://github.com/alibaba/flutter_boost)进行接入
+    * 打开xcode，将scheme切换为Runner，然后运行即可
 
 4. 如果你的同事已经使用flutter-boot创建好了混合工程，而你又需要进行flutter开发，那么你需要的是在启动app前运行flutter-boot link来关联你的本地的flutter工程和native工程
 
