@@ -47,7 +47,10 @@
     "babel-cli": "^6.0.0",
     "chai": "3.5.0",
     "svn-info": "1.0.0",
-    "git-url-parse": "11.1.2"
+    "git-url-parse": "11.1.2",
+    "express": "*",
+    "http": "*",
+    "ejs": "*"
   },
   "devDependencies": {
     "mocha": "6.2.0"

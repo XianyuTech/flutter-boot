@@ -15,6 +15,7 @@ require('./src/commands/link')(program)
 require('./src/commands/remotelink')(program)
 require('./src/commands/update')(program)
 require('./src/commands/use')(program)
+require('./src/commands/webdev')(program)
 
 program
   .version('0.0.5')

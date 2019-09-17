@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Flutter Web</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    body {
+      font-family: "Lato", "PingFangSC-Regular", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.72222;
+      color: #34495e;
+      background-color: #f2f3f2;
+    }
+
+    .header {
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      background: #34495e;
+      position: relative;
+      z-index: 10;
+      max-width: 100%;
+      height: 64px;
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+
+    .user {
+      float: left;
+      height: 64px;
+      line-height: 64px;
+      margin-left: 2%;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .menu {
+      float: right;
+      height: 64px;
+      line-height: 64px;
+      margin-right: 2%;
+    }
+
+    .menu-item {
+      color: #fff;
+      text-decoration: none;
+      -webkit-transition: .25s;
+      transition: .25s;
+      font-size: 16px;
+    }
+
+    .menu-item:hover {
+      color: #16a085;
+    }
+
+    .content {
+      font-size: 0;
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    .page-item {
+      display: inline-block;
+      width: 23%;
+      border-radius: 6px;
+      overflow: hidden;
+      background-color: #fff;
+      margin: 1%;
+      vertical-align: top;
+    }
+
+    .page-name {
+      background-color: #1abc9c;
+      height: 64px;
+      line-height: 64px;
+      font-size: 16px;
+      font-weight: 700;
+      padding-left: 20px;
+      color: #fff;
+    }
+
+    .page-content {
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-top: 8px;
+    }
+
+    .page-key {
+      line-height: 36px;
+      font-size: 16px;
+    }
+
+    .page-web-value {
+      line-height: 20px;
+      font-size: 14px;
+      margin-bottom: 8px;
+      word-wrap: break-word;
+      color: #3498DB;
+      text-decoration: underline;
+    }
+
+    .page-qr {
+      width: 60%;
+      margin: 0 auto 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="user">
+      Flutter Web
+    </div>
+  </div>
+  <div class="content">
+    <% for(var i in pages) { %>
+    <div class="page-item">
+      <div class="page-name">
+        <%= pages[i] %>
+      </div>
+      <div class="page-content">
+        <div class="page-key">Web</div>
+        <a href="http://<%= opts.host%>/<%= pages[i] %>" target="_blank">
+          <div class="page-web-value">http://<%= opts.host%>/<%= pages[i] %></div>
+        </a>
+        <div class="page-key">QRCode</div>
+        <div class="page-qrcode" data-qrurl="http://<%= opts.host%>/<%= pages[i] %>">
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+  <script src="//g.alicdn.com/mtb/lib-3rd/jquery/jquery.min.js"></script>
+  <script src="//g.alicdn.com/mtb/lib-qrcode/1.0.1/qrcode.js"></script>
+  <script>
+    /**
+     * [generateQrCode 根据URL返回二维码的canvas dom]
+     * @param  {[type]} url [页面URL]
+     * @return {[type]}     [description]
+     */
+    function generateQrCode(url, w, h) {
+      var options = {
+        render: "canvas",
+        width: w,
+        height: h,
+        typeNumber: -1,
+        correctLevel: lib.QRErrorCorrectLevel.H,
+        background: "#ffffff",
+        foreground: "#000000"
+      }
+      var qrcode = new lib.QRCode(options.typeNumber, options.correctLevel);
+      qrcode.addData(url);
+      qrcode.make();
+
+      // create canvas element
+      var canvas = document.createElement('canvas');
+      canvas.width = options.width;
+      canvas.height = options.height;
+      var ctx = canvas.getContext('2d');
+
+      // compute tileW/tileH based on options.width/options.height
+      var tileW = options.width / qrcode.getModuleCount();
+      var tileH = options.height / qrcode.getModuleCount();
+
+      // draw in the canvas
+      for (var row = 0; row < qrcode.getModuleCount(); row++) {
+        for (var col = 0; col < qrcode.getModuleCount(); col++) {
+          ctx.fillStyle = qrcode.isDark(row, col) ? options.foreground : options.background;
+          var w = (Math.ceil((col + 1) * tileW) - Math.floor(col * tileW));
+          var h = (Math.ceil((row + 1) * tileW) - Math.floor(row * tileW));
+          ctx.fillRect(Math.round(col * tileW), Math.round(row * tileH), w, h);
+        }
+      }
+      return canvas;
+    }
+
+    /**
+     * [initQrCode 添加二维码元素]
+     * @return {[type]} [description]
+     */
+    function initQrCode() {
+      var eles = $('.page-qrcode');
+      eles.each(function (index, el) {
+        var url = el.dataset['qrurl'];
+        var qrcodeEle = generateQrCode(url, 150, 150);
+        qrcodeEle.classList.add('page-qr');
+        $(el).parent().append(qrcodeEle);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      initQrCode();
+    });
+
+  </script>
+</body>
+
+</html>
