@@ -1,4 +1,5 @@
 
+[查看中文说明](#简介)
 # Description
 A native-flutter-hybrid develop tool helps you add and develop flutter with your existing app.
 We supports a standard hybrid project structure following google.
