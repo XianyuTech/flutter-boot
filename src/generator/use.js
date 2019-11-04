@@ -78,7 +78,9 @@ class GeneratorUse {
 
   async copyTpl (platform, packageName, targetPath) {
     await fsutils
-      .copyFolderAsync(this.tplfile(platform, packageName), targetPath)
+      .copyFolderAsync(this.tplfile(platform, packageName), targetPath, {
+        mkdes: true
+      })
       .catch(e => {
         log.error(TAG, `copy error:${e}`)
       })

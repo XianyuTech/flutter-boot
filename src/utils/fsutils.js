@@ -3,6 +3,7 @@ const execSync = require('child_process').execSync
 const ncp = require('ncp').ncp
 const path = require('path')
 const XCODEPROJ_SUFFIX = '.xcodeproj'
+const log = require('../log')
 
 let lsCache = {}
 
@@ -182,12 +183,17 @@ function projectChecker (projectPath) {
 
 function copyFolderAsync (source, destination, options = {}) {
   return new Promise((resolve, reject) => {
+    if (options.mkdes && !fs.existsSync(destination)) {
+      log.silly('COPY_FOLDER', 'create destination')
+      execSync(`mkdir -p ${destination}`)
+    }
     ncp(source, destination, options, function (err) {
       if (err) {
         reject(err)
         return
       }
       console.log('done!')
+      log.silly('COPY_FOLDER', `copy success from ${source} to ${destination}`)
       resolve(true)
     })
   })
