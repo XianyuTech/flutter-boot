@@ -33,7 +33,9 @@ function existedFlutterModule () {
 function cleanFlutterRecord () {
   const selfRoot = process.env.FB_DIR
   const modulePath = flutterRecorderPath()
-  fs.unlink(modulePath, () => {})
+  if(fs.existsSync(modulePath)) {
+    fs.unlink(modulePath, () => {})
+  }
 }
 
 module.exports = {
