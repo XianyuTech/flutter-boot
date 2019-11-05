@@ -99,7 +99,7 @@ function addOrReplaceContentBySurround (
     startContentIndex > -1 &&
     (!validEnd || (endContentIndex > -1 && startContentIndex < endContentIndex))
   ) {
-    console.log(
+    log.silly('REPLACE_CONTENT',
       rawdata.substring(0, startContentIndex + startContent.length) +
         replaceContent
     )
@@ -109,7 +109,7 @@ function addOrReplaceContentBySurround (
       (validEnd
         ? rawdata.substring(endContentIndex)
         : rawdata.substring(startContentIndex + startContent.length))
-    console.log(injection)
+    log.silly('REPLACE_CONTENT',injection)
   } else {
     injection = rawdata + replaceContent
   }
@@ -192,7 +192,6 @@ function copyFolderAsync (source, destination, options = {}) {
         reject(err)
         return
       }
-      console.log('done!')
       log.silly('COPY_FOLDER', `copy success from ${source} to ${destination}`)
       resolve(true)
     })

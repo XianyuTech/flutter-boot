@@ -36,7 +36,6 @@ class linker {
   }
 
   execSync (command, option) {
-    console.log(this.nativePath)
     _execSync(
       command,
       Object.assign(
@@ -134,21 +133,6 @@ class linker {
     } catch (e) {
       log.error(TAG, `error when update xcode setting, code: ${code}`)
     }
-  }
-
-  generate_config_file () {
-    var ob = {
-      module_path: program.directory,
-      module_repo: {
-        url: program.git_repo,
-        ref: 'master'
-      }
-    }
-
-    const content = YAML.dump(ob)
-    const fs = require('fs')
-    console.log('Creating boot config file:' + content)
-    fs.writeFileSync('./' + ConfigName, content)
   }
 
   // 在工程中创建Runner Target，以便执行flutter run时可以直接运行

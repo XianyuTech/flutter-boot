@@ -15,14 +15,14 @@ function softlink (options) {
 /**
  * 配置native业务工程
  */
-function configAndroidHost(nativePath) {
-  let injection = "def flutterPluginVersion = 'managed' \n\n";
+function configAndroidHost (nativePath) {
+  let injection = "def flutterPluginVersion = 'managed' \n\n"
   let filePath = path.join(nativePath, 'app/build.gradle')
   let rawdata = fs.readFileSync(filePath, 'utf8')
   if (!rawdata.includes(injection)) {
     const content = injection + rawdata
     fs.writeFileSync(filePath, content)
-    console.log('Patch:' + injection)
+    log.silly('SYMLINK', `Patch: ${injection}`)
   }
 }
 

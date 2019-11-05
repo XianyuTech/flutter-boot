@@ -31,8 +31,8 @@ describe('test link', () => {
             maxTimeout: 30000
           }
         )
-        .catch(() => {
-          assert(false, 'error occured')
+        .catch((e) => {
+          assert(false, `error occured:${e}`)
         })
 
       assert(response.code == 0)

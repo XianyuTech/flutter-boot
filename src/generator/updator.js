@@ -54,8 +54,7 @@ class Updator {
               baseDir: _remoteFlutterInLocal
             })
           } else {
-            console.log(branch)
-            log.silly(TAG, "branch doesn't match config, do switch")
+            log.silly(TAG, `branch ${branch} doesn't match config, do switch`)
             return repo.switchBranch({
               baseDir: _remoteFlutterInLocal,
               branchUrl: flutterRepoBranchOrTag

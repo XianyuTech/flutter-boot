@@ -22,7 +22,7 @@ module.exports = program => {
     .description('创建flutter module')
     .action(async function () {
       const cmd = arguments[arguments.length - 1]
-      console.log('creating flutter module.')
+      log.info(TAG, 'creating flutter module.')
 
       let moduleName
       if (cmd.modulename) {
@@ -34,7 +34,6 @@ module.exports = program => {
         )
       }
       let flutterRepo
-      console.log(cmd.repo)
       if (cmd.repo != undefined && cmd.repo != true) {
         flutterRepo = cmd.repo
       } else {

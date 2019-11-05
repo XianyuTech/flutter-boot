@@ -6,7 +6,6 @@ function execRubySync (name, args) {
     process.env.FB_DIR,
     'src/scripts/' + name
   )} ${args.join(' ')}`
-  console.log(cmdstr)
   execSync(cmdstr, {
     stdio: 'inherit'
   })
