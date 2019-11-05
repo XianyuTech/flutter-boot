@@ -19,7 +19,7 @@ describe('test link', () => {
       const sandbox = sd.one()
 
       const tios = await sandbox.getTpl('tios')
-      const tflutter = await sandbox.getTpl('tflutter')
+      const tflutter = await sandbox.getTpl('tflutter_1_5_4')
       const response = await sandbox
         .execute(
           ['link'],
@@ -31,7 +31,7 @@ describe('test link', () => {
             maxTimeout: 30000
           }
         )
-        .catch((e) => {
+        .catch(e => {
           assert(false, `error occured:${e}`)
         })
 
@@ -47,7 +47,7 @@ describe('test link', () => {
     before(async () => {
       sandbox = sd.one()
       tandroid = await sandbox.getTpl('tandroid')
-      tflutter = await sandbox.getTpl('tflutter')
+      tflutter = await sandbox.getTpl('tflutter_1_5_4')
       androidLinker.setOptions({
         flutterPath: tflutter,
         nativePath: tandroid
@@ -93,7 +93,7 @@ describe('test link', () => {
       const sandbox = sd.one()
 
       const tandroid = await sandbox.getTpl('tandroid')
-      const tflutter = await sandbox.getTpl('tflutter')
+      const tflutter = await sandbox.getTpl('tflutter_1_5_4')
       const response = await sandbox
         .execute(
           ['link'],

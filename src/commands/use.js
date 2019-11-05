@@ -35,6 +35,19 @@ module.exports = program => {
         //   value: 'Router'
         // }
       ])
+      const supportList = _use.supportList(answer)
+      let version
+      if (supportList) {
+        version = await ui.list(
+          '选择版本号',
+          supportList.map(v => {
+            return {
+              name: v,
+              value: v
+            }
+          })
+        )
+      }
       const loadConfig = config.readLocal(process.cwd())
       if (!loadConfig.flutterPath) {
         log.error(TAG, '找不到flutter路径，请运行flutter-boot link')
@@ -42,6 +55,7 @@ module.exports = program => {
       }
       await _use.use({
         depName: answer,
+        version,
         flutterPath: loadConfig.flutterPath,
         nativePath: curPath
       })

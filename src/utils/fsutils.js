@@ -184,7 +184,7 @@ function projectChecker (projectPath) {
 function copyFolderAsync (source, destination, options = {}) {
   return new Promise((resolve, reject) => {
     if (options.mkdes && !fs.existsSync(destination)) {
-      log.silly('COPY_FOLDER', 'create destination')
+      log.silly('COPY_FOLDER', 'create target folder')
       execSync(`mkdir -p ${destination}`)
     }
     ncp(source, destination, options, function (err) {

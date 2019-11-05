@@ -1,16 +1,32 @@
 {
-    "pubspec": {
-        "name": "flutter_boost",
-        "version": "0.1.52"
+    "support_version": {
+        "0.1.52": {
+            "tag": "1"
+        },
+        "0.1.54": {
+            "tag": "2"
+        }
+    },
+    "1": {
+        "pubspec": {
+            "name": "flutter_boost",
+            "version": "0.1.52"
+        }
+    },
+    "2": {
+        "pubspec": {
+            "name": "flutter_boost",
+            "version": "0.1.92"
+        }
     },
     "android": {
-        "targetPath": "${workspace}/app/src/main/java/com/example/fbi"
+        "targetPath": "${ANDROID_PATH}/app/src/main/java/com/example/fbi"
     },
     "ios": {
-        "targetPath": "${workspace}/${projectname}/fbi"
+        "targetPath": "${IOS_PATH}/${PROJECT_NAME}/fbi"
     },
     "dart": {
-        "targetPath": "${workspace}/lib"
+        "targetPath": "${FLUTTER_PATH}/lib"
     },
     "gradle": "compile project(path: ':flutter_boost')"
 }
