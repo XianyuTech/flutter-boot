@@ -5,6 +5,9 @@
         },
         "0.1.54": {
             "tag": "2"
+        },
+        "1.9.1.hotfix": {
+            "tag": "3"
         }
     },
     "1": {
@@ -16,7 +19,14 @@
     "2": {
         "pubspec": {
             "name": "flutter_boost",
-            "version": "0.1.92"
+            "version": "0.1.54"
+        }
+    },
+    "3": {
+        "pubspec": {
+            "name": "flutter_boost",
+            "git": "https://github.com/alibaba/flutter_boost.git",
+            "version": "flutter_1.9_upgrade_opt"
         }
     },
     "android": {
