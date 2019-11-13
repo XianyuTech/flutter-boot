@@ -33,6 +33,9 @@ module.exports = program => {
           'my_flutter_module'
         )
       }
+      
+      const enableAndroidX = await ui.confirm('是否使用androidX？')
+
       let flutterRepo
       if (cmd.repo != undefined && cmd.repo != true) {
         flutterRepo = cmd.repo
@@ -60,7 +63,8 @@ module.exports = program => {
         initDir: process.cwd(),
         moduleName,
         flutterRepo,
-        flutterRepoBranchOrTag
+        flutterRepoBranchOrTag,
+        androidX: enableAndroidX
       })
     })
 }

@@ -4,6 +4,7 @@ const fs = require('fs')
 const log = require('../log')
 const fsutils = require('../utils/fsutils')
 const { softlink } = require('./softlink')
+const checker = require('./check')
 const TAG = '[Androidlink]'
 
 const INJECTION_BUILD_GRADLE =
@@ -39,6 +40,10 @@ class linker {
   link (options) {
     this.flutterPath = options.flutterPath
     this.nativePath = options.nativePath
+    if (!checker.check(options)) {
+      log.error(TAG, 'link failed: check failed')
+      return false
+    }
     this.injectCompileOptions()
     this.injectDependency()
     this.injectGradleProperties()
@@ -46,6 +51,7 @@ class linker {
     this.injectGradleSettings()
     this.injectGitIgnore()
     softlink(options)
+    return true
   }
 
   injectionBuildGradle () {

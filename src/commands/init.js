@@ -41,6 +41,8 @@ async function init (options) {
     'my_flutter_module'
   )
 
+  const enableAndroidX = await ui.confirm('是否使用androidX？')
+
   const flutterRepo = (await ui.input('请输入flutter仓库地址，回车跳过')).trim()
   let flutterRepoBranchOrTag
   if (!isEmpty(flutterRepo)) {
@@ -53,7 +55,8 @@ async function init (options) {
     initDir: process.cwd(),
     moduleName,
     flutterRepo,
-    flutterRepoBranchOrTag
+    flutterRepoBranchOrTag,
+    androidX: enableAndroidX
   })
   if (!moduleName) {
     log.error(TAG, 'invalid module name')

@@ -27,8 +27,14 @@ class creator {
   async createFlutterModule (options) {
     const initDir = options.initDir
     const moduleName = options.moduleName
+    const androidX = options.androidX
     log.info(TAG, 'creating flutter module')
-    execSync('flutter create -t module ' + moduleName.toLowerCase(), {
+    let createCmd = 'flutter create'
+    if (androidX) {
+      createCmd += ' --androidx'
+    }
+    createCmd += (' -t module ' + moduleName.toLowerCase())
+    execSync(createCmd, {
       stdio: 'inherit'
     })
     recordFlutterModule(path.join(initDir, moduleName))
