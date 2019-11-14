@@ -142,3 +142,32 @@ util.suffix = function (m) {
 util.parseJSON = function (str) {
   return require('json-parse-helpfulerror').parse(str)
 }
+
+util.getFullFlutterVersion = function () {
+  let ret = ''
+  try {
+    const prefix = 'Flutter'
+    let infos = execSync('flutter --version')
+      .toString()
+      .trim()
+      .split('•')
+    if (infos.length > 0) {
+      ret = infos[0]
+        .substring(infos[0].indexOf(prefix) + prefix.length) //Flutter 1.9.1+hotfix.6
+        .trim()
+    }
+  } catch (err) {
+    console.error('get flutter version ERROR:' + err.message)
+  }
+  return ret
+}
+
+util.getShortFlutterVersion = function () {
+  let fullVersion = util.getFullFlutterVersion()
+  let arr = fullVersion
+    .split('.')
+    .slice(0, 2);
+  return arr.length == 2 ? 
+    ''.concat(arr[0], '.', arr[1]) : 
+    fullVersion
+}
