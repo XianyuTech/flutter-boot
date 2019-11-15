@@ -13,6 +13,7 @@ const execSync = require('child_process').execSync
 const inquirer = require('inquirer')
 const isEmpty = require('../utils/isEmpty')
 const pathUtils = require('../utils/pathUtils')
+const util = require('../util')
 
 const TAG = '[init]'
 
@@ -41,7 +42,11 @@ async function init (options) {
     'my_flutter_module'
   )
 
-  const enableAndroidX = await ui.confirm('是否使用androidX？')
+  let enableAndroidX
+  // flutter stable 1.9.1
+  if (util.getShortFlutterVersion() == '1.9') {
+    enableAndroidX = await ui.confirm('是否使用androidX？')      
+  }
 
   const flutterRepo = (await ui.input('请输入flutter仓库地址，回车跳过')).trim()
   let flutterRepoBranchOrTag

@@ -42,7 +42,7 @@ class linker {
     this.nativePath = options.nativePath
     if (!checker.check(options)) {
       log.error(TAG, 'link failed: check failed')
-      return false
+      process.exit(1)
     }
     this.injectCompileOptions()
     this.injectDependency()
@@ -51,7 +51,6 @@ class linker {
     this.injectGradleSettings()
     this.injectGitIgnore()
     softlink(options)
-    return true
   }
 
   injectionBuildGradle () {
