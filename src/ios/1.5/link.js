@@ -4,12 +4,13 @@ const path = require('path')
 const program = require('commander')
 const YAML = require('js-yaml')
 const ConfigName = 'flutter-boot.yaml'
-const log = require('../log')
-const fsutils = require('../utils/fsutils')
+const log = require('../../log')
+const fsutils = require('../../utils/fsutils')
+const exit = require('../../utils/exit')
 
-const { softlink } = require('./softlink')
+const { softlink } = require('../softlink')
 
-const TAG = '[link]'
+const TAG = '[link-1.5]'
 const XCODEPROJ_SUFFIX = '.xcodeproj'
 const FLAG = '# Created by flutter-boot'
 
@@ -79,14 +80,14 @@ class linker {
           'platform'
         )
       } catch (e) {
-        log.error(TAG, `error when pod init, code: ${e}`)
+        exit(TAG, `error when pod init, code: ${e}`, -1)
       }
     }
   }
 
   preparePodHelper () {
     fs.copyFileSync(
-      path.join(process.env.FB_DIR, 'src', 'scripts', 'fbpodhelper.rb'),
+      path.join(process.env.FB_DIR, 'src', 'ios', '1.5', 'fbpodhelper.rb'),
       path.join(this.nativePath, 'fbpodhelper.rb')
     )
   }
@@ -111,10 +112,10 @@ class linker {
   inject_xcode (project_name) {
     const xcodeprojPath = this.xcodeproj()
     const pbxproj = this.pbxproj()
-    const xocdeAlreadyUpdated = fs
+    const xcodeAlreadyUpdated = fs
       .readFileSync(pbxproj, 'utf8')
       .includes('Flutter Build Script')
-    if (xocdeAlreadyUpdated) {
+    if (xcodeAlreadyUpdated) {
       log.info(TAG, 'xcode already settled')
       return
     }
@@ -131,7 +132,7 @@ class linker {
     try {
       this.execSync(task)
     } catch (e) {
-      log.error(TAG, `error when update xcode setting, code: ${code}`)
+      exit(TAG, `error when update xcode setting, code: ${code}`, -1)
     }
   }
 
@@ -142,13 +143,13 @@ class linker {
     const projectName = this.getProjectName()
     const task = `ruby ${path.join(
       process.env.FB_DIR,
-      'src/ios/duplicate_target.rb'
+      'src/scripts/duplicate_target.rb'
     )} ${xcodeprojPath} ${projectName} Runner`
 
     try {
       this.execSync(task)
     } catch (e) {
-      log.error(TAG, 'error when add Runner target to project.' + e)
+      exit(TAG, 'error when add Runner target to project.' + e, -1)
     }
   }
 
@@ -159,8 +160,11 @@ class linker {
     let start = this.getTargetNameStr(this.projectName)
     let end = 'end'
     let runnerStart = this.getTargetNameStr('Runner')
-
-    if (rawdata.includes(start) && !rawdata.includes(runnerStart)) {
+    if (!rawdata.includes(start)) {
+      exit(TAG, 'no main target found in Podfile', -1)
+    } else if (rawdata.includes(runnerStart)) {
+      log.info(TAG, 'Runner target found in Podfile')
+    } else {
       let defaultTargetStr = this.readPodfile(rawdata, this.projectName)
       let reg = new RegExp(this.projectName, 'g')
       let replacedTargetStr = defaultTargetStr.replace(reg, 'Runner')
@@ -172,11 +176,6 @@ class linker {
         FLAG + '\n' + replacedTargetStr.substring(startIndex, endIndex) + str
       let injection = '\n' + targetContent + '\n' + end + '\n'
       fs.appendFileSync(podfilePath, injection)
-    } else {
-      log.silly(
-        TAG,
-        `no target found in Podfile, start:${start};runnerStart:${runnerStart}`
-      )
     }
   }
 
@@ -212,9 +211,10 @@ class linker {
         i = startIndex + startStr.length
       } else if (endIndex > 0) {
         if (stk.length < 1) {
-          log.error(
+          exit(
             TAG,
-            'Podfile contains unmatched target and end, fail to modify Podfile!'
+            'Podfile contains unmatched target and end, fail to modify Podfile!',
+            -1
           )
           break
         } else {
@@ -226,7 +226,7 @@ class linker {
         }
         i = endIndex + endStr.length
       } else {
-        log.error(TAG, 'No target or end found in Podfile.')
+        exit(TAG, 'No target or end found in Podfile.', -1)
         break
       }
     }
@@ -239,9 +239,10 @@ class linker {
       rawdata.includes('post_install do |installer|') &&
       !rawdata.includes(FLAG)
     ) {
-      log.error(
+      log.warn(
         TAG,
-        '`post_install` hook exists, which will conflict with podhelper.rb and rise a `multiple post_install hooks` error. See https://github.com/flutter/flutter/issues/26212 for detail.'
+        '`post_install` hook exists, which will rise a `multiple post_install hooks` error. \
+        See https://github.com/flutter/flutter/issues/26212 for detail.'
       )
     }
   }

@@ -5,6 +5,7 @@ const log = require('../log')
 const fsutils = require('../utils/fsutils')
 const fsconfig = require('../config')
 const execSync = require('child_process').execSync
+const util = require('../util')
 
 const TAG = '[link]'
 
@@ -20,7 +21,7 @@ class BaseLinker {
       linker = require('../android/link.js')
       fsconfig.updateLocalFlutterPath(nativePath, flutterPath)
     } else if (projChecker.isIOS()) {
-      linker = require('../ios/link.js')
+      linker = this.getIOSLinker()
       fsconfig.updateLocalFlutterPath(nativePath, flutterPath)
     } else {
       log.error(TAG, '不在native工程内')
@@ -35,6 +36,15 @@ class BaseLinker {
       cwd: options.flutterPath
     })
     log.info(TAG, 'link success')
+  }
+
+  getIOSLinker () {
+    let version = util.getShortFlutterVersion()
+    if (version.startsWith('1.5')) {
+      return require('../ios/1.5/link.js')
+    } else if (version.startsWith('1.9')) {
+      return require('../ios/1.9/link.js')
+    }
   }
 }
 
