@@ -9,6 +9,7 @@ const log = require('../log')
 const isEmpty = require('../utils/isEmpty')
 
 const creator = require('../generator/creator')
+const util = require('../util')
 
 const TAG = '[create]'
 
@@ -34,7 +35,11 @@ module.exports = program => {
         )
       }
       
-      const enableAndroidX = await ui.confirm('是否使用androidX？')
+      let enableAndroidX
+      // flutter stable 1.9.1
+      if (util.getShortFlutterVersion() == '1.9') {
+        enableAndroidX = await ui.confirm('是否使用androidX？')      
+      }
 
       let flutterRepo
       if (cmd.repo != undefined && cmd.repo != true) {
