@@ -1,7 +1,6 @@
 const _execSync = require('child_process').execSync
 const fs = require('fs')
 const path = require('path')
-const ConfigName = 'flutter-boot.yaml'
 const log = require('../../log')
 const fsutils = require('../../utils/fsutils')
 const exit = require('../../utils/exit')
@@ -232,15 +231,12 @@ class linker {
 
   checkPostInstallHook () {
     let rawdata = fs.readFileSync(this.podfile(), 'utf8')
-    if (
-      rawdata.includes('post_install do |installer|') &&
-      !rawdata.includes(FLAG)
-    ) {
+    if (rawdata.includes('post_install do |installer|')) {
       log.warn(
         TAG,
-        '`post_install` hook exists, which will conflict with podhelper.rb and rise a `multiple post_install hooks` error.\
-        See https://github.com/flutter/flutter/issues/26212 for detail.'
+        'found post_install hook in Podfile, please add "ENABLE_BITCODE = NO" to your post_install hook like below:'
       )
+      console.log('post_install do |installer| \n  installer.pods_project.targets.each do |target| \n    target.build_configurations.each do |config| \n      config.build_settings[\'ENABLE_BITCODE\'] = \'NO\' \n    end \n  end \nend')
     }
   }
 
