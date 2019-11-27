@@ -73,7 +73,7 @@ describe('test use', () => {
       const sandbox = sd.one()
 
       const tios = await sandbox.getTpl('tios')
-      const tflutter = await sandbox.getTpl('tflutter_1_5_4')
+      const tflutter = await sandbox.getTpl('tflutter_1_9_1')
       await sandbox
         .execute(
           ['link'],
@@ -85,8 +85,8 @@ describe('test use', () => {
             maxTimeout: 30000
           }
         )
-        .catch(() => {
-          assert(false, 'error occured')
+        .catch((e) => {
+          assert(false, `error occured`)
         })
       const response = await sandbox
         .execute(
