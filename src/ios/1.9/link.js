@@ -112,10 +112,13 @@ class linker {
     log.silly(TAG, 'prepare Runner target')
     const xcodeprojPath = this.xcodeproj()
     const projectName = this.getProjectName()
-    const task = `ruby ${path.join(
-      process.env.FB_DIR,
-      'src/scripts/duplicate_target.rb'
-    )} ${xcodeprojPath} ${projectName} Runner`
+    const task = [   
+      'gem install xcodeproj',
+      `ruby ${path.join(
+        process.env.FB_DIR,
+        'src/scripts/duplicate_target.rb'
+      )} ${xcodeprojPath} ${projectName} Runner`
+    ].join('&&')
 
     try {
       this.execSync(task)
@@ -123,7 +126,8 @@ class linker {
       exit(
         TAG, 
         'error when add Runner target to project.' + e, 
-        -1)
+        -1
+      )
     }
   }
 
@@ -188,7 +192,8 @@ class linker {
           exit(
             TAG,
             'Podfile contains unmatched target and end, fail to modify Podfile!',
-             -1)
+            -1
+          )
           break
         } else {
           let res = stk.pop()
