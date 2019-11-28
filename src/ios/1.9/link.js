@@ -1,7 +1,6 @@
 const _execSync = require('child_process').execSync
 const fs = require('fs')
 const path = require('path')
-const ConfigName = 'flutter-boot.yaml'
 const log = require('../../log')
 const fsutils = require('../../utils/fsutils')
 const exit = require('../../utils/exit')
@@ -17,6 +16,16 @@ class linker {
     this.flutterPath = ''
     this.nativePath = ''
     this.projectName = ''
+  }
+
+  setOptions (options) {
+    this.flutterPath = options.flutterPath
+    this.nativePath = options.nativePath
+    this.projectName = options.projectName
+  }
+
+  fbpodhelperPath () {
+    return path.join(this.nativePath, 'fbpodhelper.rb')
   }
 
   podfile () {
@@ -113,10 +122,13 @@ class linker {
     log.silly(TAG, 'prepare Runner target')
     const xcodeprojPath = this.xcodeproj()
     const projectName = this.getProjectName()
-    const task = `ruby ${path.join(
-      process.env.FB_DIR,
-      'src/scripts/duplicate_target.rb'
-    )} ${xcodeprojPath} ${projectName} Runner`
+    const task = [   
+      'gem install xcodeproj',
+      `ruby ${path.join(
+        process.env.FB_DIR,
+        'src/scripts/duplicate_target.rb'
+      )} ${xcodeprojPath} ${projectName} Runner`
+    ].join('&&')
 
     try {
       this.execSync(task)
@@ -124,7 +136,8 @@ class linker {
       exit(
         TAG, 
         'error when add Runner target to project.' + e, 
-        -1)
+        -1
+      )
     }
   }
 
@@ -189,7 +202,8 @@ class linker {
           exit(
             TAG,
             'Podfile contains unmatched target and end, fail to modify Podfile!',
-             -1)
+            -1
+          )
           break
         } else {
           let res = stk.pop()
@@ -232,15 +246,12 @@ class linker {
 
   checkPostInstallHook () {
     let rawdata = fs.readFileSync(this.podfile(), 'utf8')
-    if (
-      rawdata.includes('post_install do |installer|') &&
-      !rawdata.includes(FLAG)
-    ) {
+    if (rawdata.includes('post_install do |installer|')) {
       log.warn(
         TAG,
-        '`post_install` hook exists, which will conflict with podhelper.rb and rise a `multiple post_install hooks` error.\
-        See https://github.com/flutter/flutter/issues/26212 for detail.'
+        'found post_install hook in Podfile, please add "ENABLE_BITCODE = NO" to your post_install hook like below:'
       )
+      console.log('post_install do |installer| \n  installer.pods_project.targets.each do |target| \n    target.build_configurations.each do |config| \n      config.build_settings[\'ENABLE_BITCODE\'] = \'NO\' \n    end \n  end \nend')
     }
   }
 

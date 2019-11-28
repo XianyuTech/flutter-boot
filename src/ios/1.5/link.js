@@ -1,9 +1,6 @@
 const _execSync = require('child_process').execSync
 const fs = require('fs')
 const path = require('path')
-const program = require('commander')
-const YAML = require('js-yaml')
-const ConfigName = 'flutter-boot.yaml'
 const log = require('../../log')
 const fsutils = require('../../utils/fsutils')
 const exit = require('../../utils/exit')
@@ -19,6 +16,12 @@ class linker {
     this.flutterPath = ''
     this.nativePath = ''
     this.projectName = ''
+  }
+
+  setOptions (options) {
+    this.flutterPath = options.flutterPath
+    this.nativePath = options.nativePath
+    this.projectName = options.projectName
   }
 
   podfile () {
