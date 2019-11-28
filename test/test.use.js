@@ -73,7 +73,7 @@ describe('test use', () => {
       const sandbox = sd.one()
 
       const tios = await sandbox.getTpl('tios')
-      const tflutter = await sandbox.getTpl('tflutter_1_9_1')
+      const tflutter = await sandbox.getTpl('tflutter_1_9')
       await sandbox
         .execute(
           ['link'],

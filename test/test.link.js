@@ -6,20 +6,26 @@ const execSync = require('child_process').execSync
 const sd = require('./sandbox')
 const { cleanFlutterRecord } = require('../src/utils/flutterRecorder')
 const androidLinker = require('../src/android/link.js')
+const util = require('../src/util')
 
 describe('test link', () => {
+  var tflutterPath
   before(() => {
     // execSync('flutter-boot create -n tflutter -R', {
     //   cwd: path.join(process.cwd(), 'test', 'tpl')
     // })
     cleanFlutterRecord()
+    tflutterPath = 'tflutter_1_5'
+    if (util.getShortFlutterVersion() == '1.9') {     
+      tflutterPath = 'tflutter_1_9'
+    }
   })
   describe('link command', () => {
     it('test link ios and flutter', async () => {
       const sandbox = sd.one()
 
       const tios = await sandbox.getTpl('tios')
-      const tflutter = await sandbox.getTpl('tflutter_1_5_4')
+      const tflutter = await sandbox.getTpl(tflutterPath)
       const response = await sandbox
         .execute(
           ['link'],
@@ -47,7 +53,7 @@ describe('test link', () => {
     before(async () => {
       sandbox = sd.one()
       tandroid = await sandbox.getTpl('tandroid')
-      tflutter = await sandbox.getTpl('tflutter_1_5_4')
+      tflutter = await sandbox.getTpl(tflutterPath)
       androidLinker.setOptions({
         flutterPath: tflutter,
         nativePath: tandroid
@@ -93,7 +99,7 @@ describe('test link', () => {
       const sandbox = sd.one()
 
       const tandroid = await sandbox.getTpl('tandroid')
-      const tflutter = await sandbox.getTpl('tflutter_1_5_4')
+      const tflutter = await sandbox.getTpl(tflutterPath)
       const response = await sandbox
         .execute(
           ['link'],
