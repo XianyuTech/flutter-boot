@@ -20,6 +20,70 @@ describe('test link', () => {
       tflutterPath = 'tflutter_1_9'
     }
   })
+
+  describe('test iOS link', () => {
+    let sandbox
+    let tios
+    let tflutter
+    let iosLinker
+    before(async () => {
+      sandbox = sd.one()
+      tios = await sandbox.getTpl('tios')
+      tflutter = await sandbox.getTpl(tflutterPath)
+      iosLinker = getIOSLinker()
+      iosLinker.setOptions({
+        flutterPath: tflutter,
+        nativePath: tios,
+        projectName: 'tios'
+      })
+    })
+
+    it('test preparePodfile', () => {
+      iosLinker.preparePodfile()
+      let path = iosLinker.podfile()
+      assert(fs.existsSync(path))
+    })
+
+    it('test preparePodHelper', () => {
+      iosLinker.preparePodHelper()
+      let path = iosLinker.fbpodhelperPath()
+      assert(fs.existsSync(path))
+    })
+
+    if (util.getShortFlutterVersion().startsWith('1.5')) {
+      it('test injectXcode', () => {
+        iosLinker.injectXcode()
+        let path = iosLinker.pbxproj()
+        assert(fs.existsSync(path))
+        assert(fs
+          .readFileSync(path, 'utf8')
+          .includes('Flutter Build Script'))
+      })
+    }
+
+    it('test addRunnerTargetToProject', () => {
+      iosLinker.addRunnerTargetToProject()
+      let path = iosLinker.pbxproj()
+      assert(fs.existsSync(path))
+      assert(fs
+        .readFileSync(path, 'utf8')
+        .includes('/* Runner */'))
+    })
+
+    it('test addRunnerTargetToPodfile', () => {
+      iosLinker.addRunnerTargetToPodfile()
+      let path = iosLinker.podfile()
+      assert(path)
+      let rawdata = fs.readFileSync(path, 'utf8')
+      assert(rawdata.includes("target 'Runner' do") &&
+             rawdata.includes("eval(File.read(File.join(File.dirname(__FILE__), 'fbpodhelper.rb')), binding)"))
+    })
+
+    after(() => {
+      sd.del(sandbox)
+    })
+  })
+
   describe('link command', () => {
     it('test link ios and flutter', async () => {
       const sandbox = sd.one()
@@ -123,3 +187,12 @@ describe('test link', () => {
     }).timeout(30000)
   })
 })
+
+function getIOSLinker () {
+  let version = util.getShortFlutterVersion()
+  if (version.startsWith('1.5')) {
+    return require('../src/ios/1.5/link')
+  } else if (version.startsWith('1.9')) {
+    return require('../src/ios/1.9/link')
+  }
+}

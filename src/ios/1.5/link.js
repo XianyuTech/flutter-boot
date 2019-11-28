@@ -18,6 +18,12 @@ class linker {
     this.projectName = ''
   }
 
+  setOptions (options) {
+    this.flutterPath = options.flutterPath
+    this.nativePath = options.nativePath
+    this.projectName = options.projectName
+  }
+
   podfile () {
     return path.join(this.nativePath, 'Podfile')
   }

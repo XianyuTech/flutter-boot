@@ -18,6 +18,16 @@ class linker {
     this.projectName = ''
   }
 
+  setOptions (options) {
+    this.flutterPath = options.flutterPath
+    this.nativePath = options.nativePath
+    this.projectName = options.projectName
+  }
+
+  fbpodhelperPath () {
+    return path.join(this.nativePath, 'fbpodhelper.rb')
+  }
+
   podfile () {
     return path.join(this.nativePath, 'Podfile')
   }
