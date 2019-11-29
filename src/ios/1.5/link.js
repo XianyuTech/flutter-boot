@@ -24,6 +24,10 @@ class linker {
     this.projectName = options.projectName
   }
 
+  fbpodhelperPath () {
+    return path.join(this.nativePath, 'fbpodhelper.rb')
+  }
+
   podfile () {
     return path.join(this.nativePath, 'Podfile')
   }
