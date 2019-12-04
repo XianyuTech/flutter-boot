@@ -1,6 +1,6 @@
 {
   "name": "flutter-boot",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Flutter existing App integration tool.",
   "bin": {
     "flutter-boot": "./index.js"
@@ -39,7 +39,7 @@
     "js-yaml": "^3.12.1",
     "mustache": "^3.0.1",
     "easy-table": "~1.0.0",
-    "inquirer": "^1.1.2",
+    "inquirer": "7.0.0",
     "ora": "^0.3.0",
     "colors": "^1.1.2",
     "babel-register": "^6.24.1",
